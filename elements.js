@@ -33,22 +33,9 @@ document.getElementById("countdown-to-free-days").innerHTML = "<div class='count
 // Countdown of how many hours left for my work in a year
 var workDays = 260; // assuming 52 weeks with 2 days off per week
 var workHours = workDays * 9; // 9 hours per work day
-var hoursLeft = workHours - (now.getHours() - 9); // assuming start work at 9 am
+var hoursLeft = workHours - ((now.getHours() - 9) + (now.getMinutes() / 60)); // assuming start work at 9 am
 
-document.getElementById("countdown-to-work-hours").innerHTML = "<div class='countdown'>Countdown of how many work hours left: </div>" + hoursLeft + " hours";
+document.getElementById("countdown-to-work-hours").innerHTML = "<div class='countdown'>Countdown of how many work hours left: </div>" + hoursLeft.toFixed(2) + " hours";
 
 // Countdown to finishing my job after a year
-var endOfJob = new Date("Apr 17, 2024 18:00:00 GMT+0530").getTime();
-
-var y = setInterval(function() {
-
-  var now = new Date().getTime();
-
-  var distance = endOfJob - now;
-
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("countdown-to
+var endOfJob = new Date("
